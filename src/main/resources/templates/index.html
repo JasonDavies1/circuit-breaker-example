@@ -1,8 +1,28 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css"/>
+</head>
 <body>
 
-<h1 th:text="${message}"></h1>
+<body class="text-center">
+
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading" th:text="${message}"></h1>
+        <p class="lead" th:text="${disclaimer}"></p>
+        <p class="lead">
+            <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+        </p>
+    </main>
+
+</div>
+</body>
 
 </body>
 </html>
