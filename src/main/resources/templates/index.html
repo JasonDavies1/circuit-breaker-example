@@ -17,8 +17,12 @@
         <h1 class="cover-heading" th:text="${message}"></h1>
         <p class="lead" th:text="${disclaimer}"></p>
         <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+            <a href="/test" class="btn btn-lg btn-secondary">Learn more</a>
         </p>
+
+        <div th:if="${buttonClicked}">
+            <h1 th:text="${buttonClickMessage}"></h1>
+        </div>
     </main>
 
 </div>
