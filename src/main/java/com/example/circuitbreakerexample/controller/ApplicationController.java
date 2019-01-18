@@ -1,12 +1,18 @@
 package com.example.circuitbreakerexample.controller;
 
+import com.example.circuitbreakerexample.CircuitBreakerExampleApplication;
+import com.example.circuitbreakerexample.breaker.CircuitBreakerService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequiredArgsConstructor
 public class ApplicationController {
+
+    private final CircuitBreakerService circuitBreakerService;
 
     @ModelAttribute("message")
     public String message() {
@@ -25,8 +31,8 @@ public class ApplicationController {
 
     @GetMapping("/test")
     public String test(final RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("buttonClicked", true);
-        redirectAttributes.addFlashAttribute("buttonClickMessage", "You clicked the button, good for you I guess");
+        final String result = circuitBreakerService.makeRequestToProtectedResource();
+        redirectAttributes.addFlashAttribute("response", result);
         return "redirect:/";
     }
 }
